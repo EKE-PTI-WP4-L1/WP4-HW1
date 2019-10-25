@@ -108,5 +108,4 @@ typings/
 *.scss.map
 
 .idea/
-dist/*
-!dist/index.html
+dist/

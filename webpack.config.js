@@ -1,7 +1,12 @@
 const path = require('path');
+const fs = require('fs');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const appDirectory = fs.realpathSync(process.cwd());
+const resolveAppPath = relativePath => path.resolve(appDirectory, relativePath);
+const host = process.env.HOST || 'localhost';
 
 module.exports = {
     mode: 'development',
@@ -10,6 +15,14 @@ module.exports = {
     output: {
         filename: 'main.js',
         path: path.resolve(__dirname, 'dist')
+    },
+    devServer: {
+        contentBase: resolveAppPath('public'),
+        compress: false,
+        hot: false,
+        host,
+        port: 3000,
+        publicPath: '/'
     },
     module: {
         rules: [
@@ -43,6 +56,10 @@ module.exports = {
         new webpack.ProvidePlugin({
             $: "jquery",
             jQuery: "jquery"
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            template: resolveAppPath('public/index.html')
         })
     ]
 };
