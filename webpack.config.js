@@ -10,7 +10,7 @@ const host = process.env.HOST || 'localhost';
 
 module.exports = {
     mode: 'development',
-    devtool: 'inline-source-map',
+    devtool: 'cheap-module-eval-source-map',
     entry: ['./src/js/index.js', './src/scss/index.scss'],
     output: {
         filename: 'main.js',
@@ -27,14 +27,29 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.m?js$/,
+                exclude: /(node_modules|bower_components)/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env'],
+                        plugins: ['@babel/plugin-proposal-class-properties']
+                    }
+                }
+            },
+            {
                 test: /\.scss$/,
-                use: [{
-                    loader: MiniCssExtractPlugin.loader,
-                }, {
-                    loader: 'css-loader'
-                }, {
-                    loader: 'sass-loader'
-                }]
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: 'css-loader',
+                        options: {sourceMap: true},
+                    },
+                    {
+                        loader: 'sass-loader',
+                        options: {sourceMap: true},
+                    },
+                ]
             },
             {
                 test: /.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/, // For Font Awesome
@@ -55,12 +70,21 @@ module.exports = {
                     }
                 }]
             },
+            {
+                test: /\.txt$/,
+                use: [
+                    'raw-loader',
+                ],
+            },
         ]
     },
     plugins: [
         new CleanWebpackPlugin(),
+        new webpack.SourceMapDevToolPlugin({
+            filename: "[file].map"
+        }),
         new MiniCssExtractPlugin({
-            filename: '[name].css',
+            filename: '[name].css'
         }),
         new webpack.ProvidePlugin({
             $: "jquery",
