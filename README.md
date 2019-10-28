@@ -10,6 +10,8 @@ Webprogramozás 4 - beadandó 1
 
         cd path/to/project/root
         npm run build
+        #OR
+        npm start
         
 ## Open
 

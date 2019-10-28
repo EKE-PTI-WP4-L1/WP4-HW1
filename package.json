@@ -21,7 +21,8 @@
   "dependencies": {
     "bootstrap": "^4.3.1",
     "jquery": "^3.4.1",
-    "mini-css-extract-plugin": "^0.8.0"
+    "mini-css-extract-plugin": "^0.8.0",
+    "startbootstrap-sb-admin-2": "^4.0.7"
   },
   "scripts": {
     "build": "npx webpack --config webpack.config.js",
