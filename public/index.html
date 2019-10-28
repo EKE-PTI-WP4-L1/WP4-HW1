@@ -256,7 +256,9 @@
                             </h6>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="https://cdn.pixabay.com/photo/2015/12/22/04/00/photo-1103595_960_720.png" alt="">
+                                    <img class="rounded-circle"
+                                         src="https://cdn.pixabay.com/photo/2015/12/22/04/00/photo-1103595_960_720.png"
+                                         alt="">
                                     <div class="status-indicator bg-success"></div>
                                 </div>
                                 <div class="font-weight-bold">
@@ -268,7 +270,9 @@
                             </a>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="https://cdn.pixabay.com/photo/2015/12/22/04/00/photo-1103595_960_720.png" alt="">
+                                    <img class="rounded-circle"
+                                         src="https://cdn.pixabay.com/photo/2015/12/22/04/00/photo-1103595_960_720.png"
+                                         alt="">
                                     <div class="status-indicator"></div>
                                 </div>
                                 <div>
@@ -280,7 +284,9 @@
                             </a>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="https://cdn.pixabay.com/photo/2015/12/22/04/00/photo-1103595_960_720.png" alt="">
+                                    <img class="rounded-circle"
+                                         src="https://cdn.pixabay.com/photo/2015/12/22/04/00/photo-1103595_960_720.png"
+                                         alt="">
                                     <div class="status-indicator bg-warning"></div>
                                 </div>
                                 <div>
@@ -292,7 +298,9 @@
                             </a>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="https://cdn.pixabay.com/photo/2015/12/22/04/00/photo-1103595_960_720.png" alt="">
+                                    <img class="rounded-circle"
+                                         src="https://cdn.pixabay.com/photo/2015/12/22/04/00/photo-1103595_960_720.png"
+                                         alt="">
                                     <div class="status-indicator bg-success"></div>
                                 </div>
                                 <div>
@@ -313,7 +321,8 @@
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
-                            <img class="img-profile rounded-circle" src="https://cdn.pixabay.com/photo/2015/12/22/04/00/photo-1103595_960_720.png">
+                            <img class="img-profile rounded-circle"
+                                 src="https://cdn.pixabay.com/photo/2015/12/22/04/00/photo-1103595_960_720.png">
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -344,9 +353,229 @@
             <!-- End of Topbar -->
 
             <!-- Begin Page Content -->
-            <div class="container-fluid">
+            <div id="content-body" class="container-fluid">
 
-                content...
+                <section id="article-section">
+                    <div class="row">
+                        <div class="col-sm-12 article-title">
+                            <h1>címkeajánló - HETILAP</h1>
+                        </div>
+                    </div>
+                    <div id="article-control-panel">
+                        <form class="user">
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <div>
+                                        <label for="article-selector">Cikkek listája:</label>
+                                        <select id="article-selector" class="form-control">
+                                            <option></option>
+                                        </select>
+                                    </div>
+                                    <div class="mt-3">
+                                        <div class="float-left">Valószínűség: <span
+                                                id="probability-value"><b>0.8</b></span></div>
+                                        <div class="float-right">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-checkbox small">
+                                                    <input type="checkbox" id="min-three" class="custom-control-input">
+                                                    <label for="min-three" class="custom-control-label">min. 3</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="mt-3">
+                                        <div class="form-group">
+                                            <input type="range" min="0" max="100" value="80"
+                                                   class="form-control slider">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div id="article-paginator">
+                                        <div><label>&nbsp;</label></div>
+                                        <button class="btn btn-secondary">&lt;&lt;</button>
+                                        <button class="btn btn-secondary">&lt;</button>
+                                        <button class="btn btn-secondary">&gt;</button>
+                                        <button class="btn btn-secondary">&gt;&gt;</button>
+                                    </div>
+                                    <div id="article-calculations">
+                                        <div class="mt-3">
+                                            P: <span id="p-value">0.766</span>
+                                        </div>
+                                        <div class="mt-3">
+                                            R: <span id="r-value">0.318</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div id="article-content-panel">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card shadow mb-4">
+                                    <div class="card-header py-3">
+                                        <h6 class="m-0 font-weight-bold text-primary">Cikk szövege</h6>
+                                    </div>
+                                    <div class="card-body">
+                                        The styling for this basic card example is created by using default Bootstrap
+                                        utility classes. By using utility classes, the style of the card component can
+                                        be easily modified with no need for any custom CSS!
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card shadow mb-4">
+                                    <div class="card-header py-3">
+                                        <div class="row">
+                                            <div class="col-5">
+                                                <h6 class="m-0 font-weight-bold text-primary">Eredeti címkék</h6>
+                                            </div>
+                                            <div class="col-7">
+                                                <h6 class="m-0 font-weight-bold text-primary">Ajánlott címkék</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body labels-body">
+                                        <div class="row">
+                                            <div class="col-5 label-column first-label-column">
+                                                <ul class="no-list-style">
+                                                    <li>abc</li>
+                                                    <li>abc</li>
+                                                    <li>abc</li>
+                                                    <li>abc</li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-7 label-column">
+                                                <ul class="no-list-style">
+                                                    <li>abc</li>
+                                                    <li>abc</li>
+                                                    <li>abc</li>
+                                                    <li>abc</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card shadow mb-4">
+                                    <div class="card-header py-3">
+                                        <div class="row">
+                                            <div class="col-5">
+                                                <h6 class="m-0 font-weight-bold text-primary">Eredeti címkék (egyéb)</h6>
+                                            </div>
+                                            <div class="col-7">
+                                                <h6 class="m-0 font-weight-bold text-primary">Ajánlott címkék (egyéb)</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body labels-body">
+                                        <div class="row">
+                                            <div class="col-5 label-column first-label-column">
+                                                <ul class="no-list-style">
+                                                    <li>abc</li>
+                                                    <li>abc</li>
+                                                    <li>abc</li>
+                                                    <li>abc</li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-7 label-column">
+                                                <ul class="no-list-style">
+                                                    <li>abc</li>
+                                                    <li>abc</li>
+                                                    <li>abc</li>
+                                                    <li>abc</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="static-news">
+                    <div class="row">
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Earnings (Monthly)</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Earnings (Annual)</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-info shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks</div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="progress progress-sm mr-2">
+                                                        <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pending Requests Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pending Requests</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-comments fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
             </div>
             <!-- /.container-fluid -->

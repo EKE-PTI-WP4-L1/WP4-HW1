@@ -2,3 +2,8 @@
 @import "../../node_modules/bootstrap/scss/bootstrap";
 @import "../../node_modules/startbootstrap-sb-admin-2/css/sb-admin-2";
 @import "../../node_modules/@fortawesome/fontawesome-free/css/all.css";
+
+/*custom styles*/
+
+@import "custom/controls";
+@import "custom/labels";
