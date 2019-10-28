@@ -18,7 +18,7 @@ module.exports = {
     },
     devServer: {
         contentBase: resolveAppPath('public'),
-        compress: false,
+        compress: true,
         hot: false,
         host,
         port: 3000,
