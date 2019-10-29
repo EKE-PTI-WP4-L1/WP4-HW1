@@ -30,3 +30,28 @@ export default class RawDataParser {
         });
         return labels;
     }
+	
+	static parseRawOriginalLabels(rawDefaultLabels) {
+        let rawLabels = rawDefaultLabels.split(' ');
+
+        let labels = [];
+        labels['normal'] = [];
+        labels['custom'] = [];
+        rawLabels.forEach(function (rawLabel) {
+            if (rawLabel !== '') {
+                let label = [];
+                label['value'] = rawLabel.replace(/@@/g, ' ');
+                label['value'] = label['value'].replace(/__label__/g, '');
+                if (label['value'].includes('geography__') ||
+                    label['value'].includes('organization__') ||
+                    label['value'].includes('person__ ')) {
+                    labels['custom'].push(label);
+                } else {
+                    labels['normal'].push(label);
+                }
+            }
+        });
+
+        return labels;
+    }
+}
