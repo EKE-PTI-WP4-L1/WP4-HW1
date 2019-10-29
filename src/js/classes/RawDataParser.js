@@ -10,48 +10,46 @@ export default class RawDataParser {
 
     static parseRawSuggestedLabels(rawSuggestedLabels) {
         let rawLabels = rawSuggestedLabels.split('__label__');
-        let labels = [];
-        labels['normal'] = [];
-        labels['custom'] = [];
+        let labels = RawDataParser.generateLabelsArray();
         rawLabels.forEach(function (rawLabel) {
             if (rawLabel !== '') {
                 let label = [];
                 let values = rawLabel.split(' ');
                 label['num'] = parseFloat(values[1]);
                 label['value'] = values[0].replace(/@@/g, ' ');
-                if (label['value'].includes('geography__') ||
-                    label['value'].includes('organization__') ||
-                    label['value'].includes('person__ ')) {
-                    labels['custom'].push(label);
-                } else {
-                    labels['normal'].push(label);
-                }
+                RawDataParser.populateNormalAndCustomLabels(label, labels);
             }
         });
         return labels;
     }
-	
-	static parseRawOriginalLabels(rawDefaultLabels) {
-        let rawLabels = rawDefaultLabels.split(' ');
 
-        let labels = [];
-        labels['normal'] = [];
-        labels['custom'] = [];
+    static parseRawOriginalLabels(rawDefaultLabels) {
+        let rawLabels = rawDefaultLabels.split(' ');
+        let labels = RawDataParser.generateLabelsArray();
         rawLabels.forEach(function (rawLabel) {
             if (rawLabel !== '') {
                 let label = [];
                 label['value'] = rawLabel.replace(/@@/g, ' ');
                 label['value'] = label['value'].replace(/__label__/g, '');
-                if (label['value'].includes('geography__') ||
-                    label['value'].includes('organization__') ||
-                    label['value'].includes('person__ ')) {
-                    labels['custom'].push(label);
-                } else {
-                    labels['normal'].push(label);
-                }
+                RawDataParser.populateNormalAndCustomLabels(label, labels);
             }
         });
 
         return labels;
+    }
+
+    static generateLabelsArray() {
+        let labels = [];
+        labels['normal'] = [];
+        labels['custom'] = [];
+        return labels;
+    }
+
+    static populateNormalAndCustomLabels(label, labels) {
+        if (label['value'].match(/(geography__|organization__|person__ )/)) {
+            labels['custom'].push(label);
+        } else {
+            labels['normal'].push(label);
+        }
     }
 }
