@@ -63,6 +63,9 @@ export default class RawDataParser {
     }
 
     static populateNormalAndCustomLabels(label, labels) {
+        if (label['value'] === '') {
+            return;
+        }
         if (/(geography: |organization: |person: )/.test(label['value'])) {
             labels['custom'].push(label);
         } else {

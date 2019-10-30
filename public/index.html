@@ -1,4 +1,4 @@
-<html lang="en">
+<html lang="hu">
 <head>
 
     <meta charset="utf-8">
@@ -367,9 +367,7 @@
                                 <div class="col-md-9">
                                     <div>
                                         <label for="article-selector">Cikkek listája:</label>
-                                        <select id="article-selector" class="form-control">
-                                            <option></option>
-                                        </select>
+                                        <select id="article-selector" class="form-control"></select>
                                     </div>
                                     <div class="mt-3">
                                         <div class="float-left">Valószínűség: <span
@@ -386,7 +384,8 @@
                                     </div>
                                     <div class="mt-3">
                                         <div class="form-group">
-                                            <input type="range" min="0" max="100" value="80"
+                                            <input id="label-probability-range" type="range" min="0" max="100"
+                                                   value="80"
                                                    class="form-control slider">
                                         </div>
                                     </div>
@@ -394,10 +393,10 @@
                                 <div class="col-md-3">
                                     <div id="article-paginator">
                                         <div><label>&nbsp;</label></div>
-                                        <button class="btn btn-secondary">&lt;&lt;</button>
-                                        <button class="btn btn-secondary">&lt;</button>
-                                        <button class="btn btn-secondary">&gt;</button>
-                                        <button class="btn btn-secondary">&gt;&gt;</button>
+                                        <button class="btn btn-secondary btn-paginator" data-num="-10">&lt;&lt;</button>
+                                        <button class="btn btn-secondary btn-paginator" data-num="-1">&lt;</button>
+                                        <button class="btn btn-secondary btn-paginator" data-num="1">&gt;</button>
+                                        <button class="btn btn-secondary btn-paginator" data-num="10">&gt;&gt;</button>
                                     </div>
                                     <div id="article-calculations">
                                         <div class="mt-3">
@@ -416,13 +415,9 @@
                             <div class="col-md-6">
                                 <div class="card shadow mb-4">
                                     <div class="card-header py-3">
-                                        <h6 class="m-0 font-weight-bold text-primary">Cikk szövege</h6>
+                                        <h6 id="article-title" class="m-0 font-weight-bold text-primary"></h6>
                                     </div>
-                                    <div class="card-body">
-                                        The styling for this basic card example is created by using default Bootstrap
-                                        utility classes. By using utility classes, the style of the card component can
-                                        be easily modified with no need for any custom CSS!
-                                    </div>
+                                    <div id="article-body" class="card-body"></div>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -440,20 +435,10 @@
                                     <div class="card-body labels-body">
                                         <div class="row">
                                             <div class="col-5 label-column first-label-column">
-                                                <ul class="no-list-style">
-                                                    <li>abc</li>
-                                                    <li>abc</li>
-                                                    <li>abc</li>
-                                                    <li>abc</li>
-                                                </ul>
+                                                <ul id="original-labels" class="no-list-style"></ul>
                                             </div>
                                             <div class="col-7 label-column">
-                                                <ul class="no-list-style">
-                                                    <li>abc</li>
-                                                    <li>abc</li>
-                                                    <li>abc</li>
-                                                    <li>abc</li>
-                                                </ul>
+                                                <ul id="suggested-labels" class="no-list-style"></ul>
                                             </div>
                                         </div>
                                     </div>
@@ -462,30 +447,24 @@
                                     <div class="card-header py-3">
                                         <div class="row">
                                             <div class="col-5">
-                                                <h6 class="m-0 font-weight-bold text-primary">Eredeti címkék (egyéb)</h6>
+                                                <h6 class="m-0 font-weight-bold text-primary">
+                                                    Eredeti címkék (egyéb)
+                                                </h6>
                                             </div>
                                             <div class="col-7">
-                                                <h6 class="m-0 font-weight-bold text-primary">Ajánlott címkék (egyéb)</h6>
+                                                <h6 class="m-0 font-weight-bold text-primary">
+                                                    Ajánlott címkék (egyéb)
+                                                </h6>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="card-body labels-body">
                                         <div class="row">
                                             <div class="col-5 label-column first-label-column">
-                                                <ul class="no-list-style">
-                                                    <li>abc</li>
-                                                    <li>abc</li>
-                                                    <li>abc</li>
-                                                    <li>abc</li>
-                                                </ul>
+                                                <ul id="custom-original-labels" class="no-list-style"></ul>
                                             </div>
                                             <div class="col-7 label-column">
-                                                <ul class="no-list-style">
-                                                    <li>abc</li>
-                                                    <li>abc</li>
-                                                    <li>abc</li>
-                                                    <li>abc</li>
-                                                </ul>
+                                                <ul id="custom-suggested-labels" class="no-list-style"></ul>
                                             </div>
                                         </div>
                                     </div>
@@ -504,7 +483,9 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Earnings (Monthly)</div>
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Earnings (Monthly)
+                                            </div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
                                         </div>
                                         <div class="col-auto">
@@ -521,7 +502,9 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Earnings (Annual)</div>
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                Earnings (Annual)
+                                            </div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
                                         </div>
                                         <div class="col-auto">
@@ -538,14 +521,17 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks</div>
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks
+                                            </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
                                                     <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="progress progress-sm mr-2">
-                                                        <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        <div class="progress-bar bg-info" role="progressbar"
+                                                             style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+                                                             aria-valuemax="100"></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -564,7 +550,9 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pending Requests</div>
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                Pending Requests
+                                            </div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
                                         </div>
                                         <div class="col-auto">

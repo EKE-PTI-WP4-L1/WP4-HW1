@@ -1,6 +1,7 @@
 export default class ArticleRenderer {
 
     article;
+    articleList;
     labelProbability;
     titleContainer;
     bodyContainer;
@@ -8,19 +9,18 @@ export default class ArticleRenderer {
     suggestedLabelsContainer;
     customOriginalLabelsContainer;
     customSuggestedLabelsContainer;
+    articleListOptions;
 
-    constructor(article = null) {
-        this.article = article;
+    constructor(articleList) {
+        this.article = articleList[0];
+        this.articleList = articleList;
         this.titleContainer = $('#article-title');
         this.bodyContainer = $('#article-body');
         this.originalLabelsContainer = $('#original-labels');
         this.suggestedLabelsContainer = $('#suggested-labels');
         this.customOriginalLabelsContainer = $('#custom-original-labels');
         this.customSuggestedLabelsContainer = $('#custom-suggested-labels');
-    }
-
-    getArticle() {
-        return this.article;
+        this.articleListOptions = $('#article-selector');
     }
 
     setArticle(article) {
@@ -38,14 +38,30 @@ export default class ArticleRenderer {
         this.renderLabels();
     }
 
+    renderOptions() {
+        let container = this.articleListOptions;
+        container.html('');
+        this.articleList.forEach(function (article, index) {
+            container.append('<option value="' + index + '">' + article.title + '</option>');
+        });
+    }
+
     renderLabels() {
         this.labelProbability = $('#label-probability-range').val() / 100;
         $('#probability-value').html('<b>' + this.labelProbability + '</b>');
 
+        let inserted = 0;
+
         this.renderOriginalLabels(this.originalLabelsContainer, this.article.originalLabels.normal);
         this.renderOriginalLabels(this.customOriginalLabelsContainer, this.article.originalLabels.custom);
-        this.renderSuggestedLabels(this.suggestedLabelsContainer, this.article.suggestedLabels.normal);
-        this.renderSuggestedLabels(this.customSuggestedLabelsContainer, this.article.suggestedLabels.custom);
+        inserted += this.renderSuggestedLabels(this.suggestedLabelsContainer, this.article.suggestedLabels.normal);
+        inserted += this.renderSuggestedLabels(this.customSuggestedLabelsContainer, this.article.suggestedLabels.custom);
+
+        let p = inserted / (this.article.suggestedLabels.normal.length + this.article.suggestedLabels.custom.length);
+        let r = inserted / (this.article.originalLabels.normal.length + this.article.originalLabels.custom.length);
+
+        $('#p-value').html(p);
+        $('#r-value').html(r);
     }
 
     renderOriginalLabels(container, data) {
@@ -79,5 +95,7 @@ export default class ArticleRenderer {
                 }
             });
         }
+
+        return inserted;
     }
 }
