@@ -6,13 +6,9 @@ Webprogramozás 4 - beadandó 1
         cd path/to/project/root
         npm install
         
-## Build
+## Build and run
 
         cd path/to/project/root
-        npm run build
+        npm run build #open ./dist/index.html
         #OR
-        npm start
-        
-## Open
-
-        ./dist/index.hmtl
+        npm start #opening is automatic
